@@ -1,0 +1,36 @@
+﻿@model BHR.ViewModels.UserLoginViewModel
+@{
+    ViewBag.Title = "ReplaceManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="h2marb">Checking Exixting Manager For Next Step</h2>
+<div class="row">
+    <div class="user-login col-lg-4">
+        @using (Html.BeginForm("CheckingManager", "Managers"))
+        {
+            @Html.ValidationSummary(true, "Please follow the instructions below")
+            <div class="form-group">
+                @Html.LabelFor(u => u.UserId)
+                @Html.TextBoxFor(u => u.UserId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.UserId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Password)
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(u => u.Password)
+            </div>
+            @Html.HiddenFor(u => u.UserId)
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Go</button>
+        }
+
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

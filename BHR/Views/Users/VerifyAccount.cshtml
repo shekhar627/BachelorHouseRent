@@ -1,0 +1,24 @@
+﻿@model BHR.Models.Document
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="upload-documents col-lg-8">
+        <h2>Verify Your Account</h2>
+        <p>please provide the scan copy of your national id card. If you have not national id then please provide your birth certificate scan copy.</p>
+
+        @using (Html.BeginForm("StoreVerify", "Users", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(du => du.DocumentContents)
+                <input type="file" name="file" id="DocumentContents" />
+            </div>
+            @Html.AntiForgeryToken()
+            <button class="btn btn-default">Upload</button>  @Html.ActionLink("back to previous", "Index", "Users")
+
+        }
+
+    </div>
+</div>

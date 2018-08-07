@@ -1,0 +1,25 @@
+﻿@model BHR.Models.UserHouse
+@{
+    ViewBag.Title = "AddMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="add-member col-g-12">
+        <h2>Add New Member</h2><hr/>
+        @using (Html.BeginForm("StoreMember", "Users"))
+        {
+            @Html.ValidationSummary(true,"Please follow the instructions below")
+            <div class="form-group">
+                @Html.LabelFor(uh => uh.UserId)
+                @Html.TextBoxFor(uh => uh.UserId, new {@class = "form-control"})
+                @Html.ValidationMessageFor(uh => uh.UserId)
+            </div>
+            @Html.AntiForgeryToken()
+            <button class="btn btn-default">Add</button>
+        }
+    </div>
+</div>
+
+
+
+

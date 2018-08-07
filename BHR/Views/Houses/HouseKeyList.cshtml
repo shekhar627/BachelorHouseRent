@@ -1,0 +1,41 @@
+﻿@model BHR.ViewModels.HouseKeyListViewModel
+@{
+    ViewBag.Title = "HouseKeyList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb"> Your Flat Keys List</h2>
+<div class="row">
+    <div class="house-key-list col-lg-9">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Flat Name/Number</th>
+                <th>Flat Key</th>
+                <th>Action/Check</th>
+                <th>Action/Check</th>
+            </tr>
+            </thead>
+            <tbody>    
+            
+            @foreach (var x in Model.HouseKeys)
+            {
+                <tr class="success">
+                    <td>@x.FlatName</td>
+                    <td>@x.Key</td>
+                    <td>@Html.ActionLink("check manager for this flat","ManagerDetails","Houses",new {key = x.Key},null)</td>
+                    <td>@Html.ActionLink("check members for this flat", "MembersList", "Houses", new { key = x.Key }, null)</td>
+                </tr>
+            }
+                 
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-2">
+        @Html.ActionLink("back to previous","HouseDetails","Houses",new{id = Model.House_Id}, null)
+
+    </div>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@model BHR.ViewModels.CheckExperianceViewModel
+@{
+    ViewBag.Title = "CheckExperience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="check_experiance col-lg-12">
+        @Html.ActionLink("back to previous", "Index", "Users",null,new {style="color:black;"})
+        <div class="check_experiance_content1 col-lg-offset-2 col-lg-4">
+
+            <ol>
+                <li>House Name</li>
+                @foreach (var x in Model.Houses)
+            {
+                <li>@x.Address</li>
+        }
+            </ol>
+        </div>
+        <div class="check_experiance_content2 col-lg-3">
+            <ul>
+                <li>Status</li>
+                @foreach (var x in Model.ManagerHouses)
+                  {
+            
+                    if (x.IsActive == true)
+                    {
+                        <li id="p2">Present Manager</li>
+                    }
+                    else
+                    {
+                        <li id="p1">Previous Manager</li>
+                    }
+           
+                 }
+            </ul>
+        </div>
+    </div>
+</div>
+

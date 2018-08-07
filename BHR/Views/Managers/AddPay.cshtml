@@ -1,0 +1,34 @@
+﻿@model BHR.ViewModels.StorePaymentViewModel
+@{
+    ViewBag.Title = "AddPay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="add_payment col-lg-12">
+        <h4 class="text-danger">Please Send Your Money to This Agent Number @Model.AgentNumber (50tk. Per Advertisement)</h4>
+        @using (Html.BeginForm("StorePayment","Managers"))
+        {
+            @Html.ValidationSummary(true,"Please follow the instructions below")
+            <div class="form-group">
+                @Html.LabelFor(sp=>sp.Mobile)
+                @Html.TextBoxFor(sp => sp.Mobile, new {@class="form-control"})
+                @Html.ValidationMessageFor(sp => sp.Mobile)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(sp=>sp.TransactionId)
+                @Html.TextBoxFor(sp => sp.TransactionId, new {@class="form-control"})
+                @Html.ValidationMessageFor(sp => sp.TransactionId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(sp=>sp.AddKey)
+                @Html.TextBoxFor(sp => sp.AddKey, new {@class="form-control"})
+                @Html.ValidationMessageFor(sp => sp.AddKey)
+            </div>
+            
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Paid</button>
+        }
+    </div>
+</div>
+

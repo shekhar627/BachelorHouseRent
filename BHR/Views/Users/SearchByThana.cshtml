@@ -1,0 +1,28 @@
+﻿@model BHR.ViewModels.CreateAddViewModel
+@{
+    ViewBag.Title = "SearchByThana";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="create_add col-lg-4">
+        <h2>Searching By Division</h2>
+        @using (Html.BeginForm("SearchThana", "Users", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true, "Please follow the instruction below")
+            <div class="form-group">
+                @Html.LabelFor(ca => ca.ThanaId)
+                @Html.DropDownListFor(ca => ca.ThanaId, new SelectList(Model.Thanas, "Id", "Name"), "Select One", new { @class = "form-control" })
+                @Html.ValidationMessageFor(ca => ca.ThanaId)
+            </div>
+
+
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+
+
+

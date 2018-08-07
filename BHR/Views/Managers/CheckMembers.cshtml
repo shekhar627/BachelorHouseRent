@@ -1,0 +1,31 @@
+﻿@model BHR.ViewModels.MembersListViewModel
+@{
+    ViewBag.Title = "CheckMembers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="all_members col-lg-12">
+        <h1>All the members are: </h1><br/>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var x in Model.User)
+            {
+                <tr>
+                    <td>@Html.ActionLink(x.FirstName+" "+x.LastName+"("+x.UserId+")","SingleUser","Managers",new {user_id=x.UserId},null)</td>
+                    <td>@Html.ActionLink("Remove this member","MemberRemove","Managers",new{userId=x.UserId},null)</td>
+                </tr>
+            }
+
+            </tbody>
+        </table>
+        @Html.ActionLink("back to previous","Index","Users")
+    </div>
+</div>
+

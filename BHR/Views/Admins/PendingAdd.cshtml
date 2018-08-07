@@ -1,0 +1,18 @@
+﻿@model IEnumerable<BHR.Models.ConfirmPayment>
+@{
+    ViewBag.Title = "PendingAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="admin_index">
+    <ol>
+        @foreach (var x in Model)
+        {
+            <li>@Html.ActionLink(x.Mobile+" "+x.AddKey+" "+x.TransactionId, "FinishAdd", "Admins",new{id=x.Id},null)</li>
+        }
+    
+    </ol>
+</div>
+@Html.ActionLink("back to previous","Index")
+
+

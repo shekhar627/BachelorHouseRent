@@ -1,0 +1,24 @@
+﻿@model BHR.ViewModels.MembersListViewModel
+@{
+    ViewBag.Title = "MembersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="member-list col-g-12">
+        <h2>all the members</h2><hr/>
+        <div class="member-name-list col-lg-offset-4 col-lg-4">
+            <ol>
+                @foreach (var x in Model.User)
+                {
+                    <li>@Html.ActionLink(x.FirstName + " " + x.LastName, "MemberDetails", new {id = x.Id}, null)</li>
+                }
+
+            </ol>
+        </div>
+        <div class="col-lg-2">
+            @Html.ActionLink("back to previous","HouseKeyList","Houses",new {id=Model.HouseId},null)
+        </div>
+    </div>
+</div>
+

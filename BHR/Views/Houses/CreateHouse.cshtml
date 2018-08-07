@@ -1,0 +1,89 @@
+﻿@model BHR.ViewModels.CreateHouseViewModel
+@{
+    ViewBag.Title = "CreateHouse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb">Create Your House</h2>
+
+<div class="row">
+    <div class="create-house col-lg-4">
+        @using (Html.BeginForm("StoreHouse","Houses"))
+        {
+            @Html.ValidationSummary(true,"Please follow the instruction below")
+            <div class="form-group">
+                @Html.LabelFor(ch=>ch.Address)
+                @Html.TextAreaFor(ch=>ch.Address, new{@class="form-control"})
+                @Html.ValidationMessageFor(ch => ch.Address)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(ch=>ch.UserId)
+                @Html.TextBoxFor(ch=>ch.UserId, new{@class="form-control", disabled = "disabled" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(ch=>ch.DivisionId)
+                @Html.DropDownListFor(ch=>ch.DivisionId, new SelectList(Model.Divisions,"Id","Name"),"Select One", new { @class = "form-control" })
+                @Html.ValidationMessageFor(ch=>ch.DivisionId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(ch=>ch.DistrictId)
+                @Html.DropDownListFor(ch=>ch.DistrictId, new SelectList(string.Empty,"Value","Text"),"Select One", new { @class = "form-control" })
+                @Html.ValidationMessageFor(ch => ch.DistrictId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(ch=>ch.ThanaId)
+                @Html.DropDownListFor(ch=>ch.ThanaId, new SelectList(string.Empty, "Value", "Text"),"Select One", new { @class = "form-control" })
+                @Html.ValidationMessageFor(ch => ch.ThanaId)
+            </div>
+
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Register House</button>
+        }
+    </div>
+    @Html.ActionLink("back to previous","Index","Users")
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // for district...
+        $("#DivisionId").change(function() {
+            $("#DistrictId").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Houses/GetDistrict",
+                datatype: "json",
+                data: { divisionId: $("#DivisionId").val() },
+                success: function(data) {
+                    $("#DistrictId").append('<option value> Select One</option>');
+                    $.each(data,
+                        function(index, value) {
+                            $("#DistrictId").append('<option value='+value.Id +'>'+value.Name+'</option>');
+                        });
+                }
+            });
+        });
+
+        // for thana...
+        $("#DistrictId").change(function() {
+            $("#ThanaId").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Houses/GetThana",
+                datatype: "json",
+                data: { districtId: $("#DistrictId").val() },
+                success: function(data) {
+                    $("#ThanaId").append('<option value> Select One</option>');
+                    $.each(data,
+                        function(index, value) {
+                            $("#ThanaId").append('<option value='+value.Id +'>'+value.Name+'</option>');
+                        });
+                }
+            });
+        });
+
+    });
+</script>
+
+

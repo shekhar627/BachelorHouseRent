@@ -1,0 +1,64 @@
+﻿@model BHR.ViewModels.UserDetailsViewModel
+@{
+    ViewBag.Title = "ViewUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="manager_details_h col-lg-12">
+
+        <div class="manager_content_h col-lg-7">
+        @Html.ActionLink("validate this user","Clearing","Admins",new {id=Model.User.Id},new {@class="btn btn-info"})
+            <div class="manager_details_1 col-lg-7">
+                <table id="manager_details_table">
+                    <tr>
+                        <td>First Name</td>
+                        <td>@Model.User.FirstName</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>@Model.User.LastName</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Number</td>
+                        <td>@Model.User.MobileNumber</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>@Model.User.Address</td>
+                    </tr>
+                    <tr>
+                        <td>Used Id</td>
+                        <td>@Model.User.UserId</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="manager_image_h col-lg-4">
+                @{
+                    if (Model.UserImage != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.UserImage.ImageContent);
+                        var imgSrc = string.Format("data: {0}; base64, {1}", Model.UserImage.ContentType, base64);
+
+                        <img src="@imgSrc" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;' />
+                    }
+                    else
+                    {
+                        <img src="~/images/profile_pic.png" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;' />
+                    }
+                }
+            </div>
+
+        </div>
+        <div class="manager_document_h col-lg-offset-1 col-lg-4">
+            @{
+                var base65 = Convert.ToBase64String(Model.Document.DocumentContents);
+                var imgSrc1 = string.Format("data: {0}; base64, {1}", Model.Document.ContentType, base65);
+            }
+
+            <img src="@imgSrc1" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;' />
+        </div>
+
+    </div>
+</div>
+

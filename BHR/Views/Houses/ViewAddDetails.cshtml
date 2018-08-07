@@ -1,0 +1,110 @@
+﻿@model BHR.ViewModels.AddDetailsViewModel
+@{
+    ViewBag.Title = "ViewAddDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="single_add col-lg-10">
+           
+        <div class="image1 col-lg-6">
+            @{
+                if (Model.AdvertiseImages != null)
+                {
+                    foreach (var x in Model.AdvertiseImages)
+                    {
+                        var base64 = Convert.ToBase64String(x.Contents);
+                        var imgSrc = string.Format("data: {0}; base64, {1}", x.ContentType, base64);
+
+                        <img src="@imgSrc" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;'/>
+                        break;
+                    }
+
+                }
+                else
+                {
+                    Write("No Image Found");
+                }
+            }
+        </div>
+        <div class="image23 col-lg-6">
+            <div class="image2 col-lg-12">
+                @{
+                    if (Model.AdvertiseImages != null)
+                    {
+                        int i = 0;
+                        foreach (var x in Model.AdvertiseImages)
+                        {
+                            i++;
+                            if (i == 2)
+                            {
+                                var base64 = Convert.ToBase64String(x.Contents);
+                                var imgSrc = string.Format("data: {0}; base64, {1}", x.ContentType, base64);
+
+                                <img src="@imgSrc" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;'/>
+
+                            }
+
+
+
+                        }
+
+                    }
+                    else
+                    {
+                        Write("No Image Found");
+                    }
+                }
+            </div>
+            <div class="image3 col-lg-12">
+                @{
+                    if (Model.AdvertiseImages != null)
+                    {
+                        int i = 0;
+                        foreach (var x in Model.AdvertiseImages)
+                        {
+                            i++;
+                            if (i == 3)
+                            {
+                                var base64 = Convert.ToBase64String(x.Contents);
+                                var imgSrc = string.Format("data: {0}; base64, {1}", x.ContentType, base64);
+
+                                <img src="@imgSrc" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;'/>
+
+                            }
+
+
+
+                        }
+
+                    }
+                    else
+                    {
+                        Write("No Image Found");
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="state col-lg-2">
+        <ul>
+            <li><b>Division : </b>@Model.Division.Name </li>
+            <li><b>District : </b> @Model.District.Name</li>
+            <li><b>Thana : </b> @Model.Thana.Name</li>
+            <li><b>Address : </b> @Model.Advertisement.Address</li>
+            <li><b>Price : </b> @Model.Advertisement.Price</li>
+            <li><b>Publish Date : </b> @Model.Advertisement.PublishDate.ToString(string.Format("dd/MM/yyyy"))</li>
+            <li><b>Ending Date : </b> @Model.Advertisement.EndDate.ToString(string.Format("dd/MM/yyyy"))</li>
+
+            
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="description col-g-12">
+        <h2><u>Description</u></h2>
+        <p>@Model.Advertisement.Description</p>
+    </div>
+    @Html.ActionLink("back to previous","CheckYourAdd","Users")
+</div>
+

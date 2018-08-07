@@ -1,0 +1,28 @@
+﻿@model BHR.ViewModels.NewManagerWithExistingManagerViewModel
+@{
+    ViewBag.Title = "CreateNewManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="h2marb">Creating Of New Manager</h2>
+<div class="row">
+    <div class="manager-create col-lg-4">
+        @using (Html.BeginForm("StoreNewManager", "Managers"))
+        {@Html.ValidationSummary(true, "Please follow the instructions below")
+            <div class="form-group">
+                @Html.LabelFor(mc => mc.UserId)
+                @Html.TextBoxFor(mc => mc.UserId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(mc => mc.UserId)
+            </div>
+        <div class="form-group">
+            @Html.LabelFor(mc => mc.ManagerHouse.Key)
+            @Html.TextBoxFor(mc => mc.ManagerHouse.Key, new { @class = "form-control" })
+            @Html.ValidationMessageFor(mc => mc.ManagerHouse.Key)
+        </div>
+       // @Html.HiddenFor(mc => mc.ManagerHouse.User_Id)
+        @Html.AntiForgeryToken()
+        <button class="btn btn-primary">Assign New Manager</button><br />
+        @Html.ActionLink("back to preious", "Index", "Users")
+    }
+    </div>
+</div>
+

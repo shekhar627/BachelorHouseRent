@@ -1,0 +1,23 @@
+﻿@model BHR.Models.ManagerHouse
+@{
+    ViewBag.Title = "CreateManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb">Creating Of Manager</h2>
+<div class="row">
+<div class="manager-create col-lg-4">
+@using (Html.BeginForm("StoreManager", "Managers"))
+{   @Html.ValidationSummary(true, "Please follow the instructions below")
+            <div class="form-group">
+                @Html.LabelFor(mc => mc.Key)
+                @Html.TextBoxFor(mc => mc.Key, new {@class="form-control"})
+                @Html.ValidationMessageFor(mc => mc.Key)
+            </div>
+            @Html.HiddenFor(mc=>mc.User_Id)
+            @Html.AntiForgeryToken()
+    <button class="btn btn-primary">Be A Manager</button><br/>
+    @Html.ActionLink("back to preious","Index","Users")
+}
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BHR.Models.Advertisement>
+@{
+    ViewBag.Title = "CheckYourAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="check_add col-lg-12">
+        <h2>Your Created Advertisement</h2><hr/>
+        <ol>
+            @foreach(var x in Model)
+            {
+                <li>@Html.ActionLink(x.Address, "ViewAddDetails", "Houses", new { id = x.Id }, null) <br/><b>Key:</b><p class="text-success">@x.Key</p> <br/> <b>Status:</b><p class="text-warning">@{if (x.IsPaid == true) { Write(" Successfully Paid"); } else { Write("   Pending. Please Check Your Payments"); }}</p> </li>
+            }
+            
+        </ol>
+    </div><br/><br/>
+    @Html.ActionLink("back to previous","Index","Users")
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BHR.Models.House>
+@{
+    ViewBag.Title = "HouseList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb">List Of Your House</h2>
+<div class="row">
+    <div class="house-list col-lg-offset-2">
+        @if (Model == null)
+        {
+            Write("there is no house of your account.");
+        }
+        else
+        {
+            int i = 1;
+            foreach (var x in Model)
+            {
+                <div class="well well-lg">@Html.ActionLink("["+i+"] "+x.Address, "HouseDetails", "Houses", new {id = x.Id}, null)</div>
+                i++;
+            }
+        }
+    </div>
+    @Html.ActionLink("back to previous","Index","Users")
+
+</div>
+

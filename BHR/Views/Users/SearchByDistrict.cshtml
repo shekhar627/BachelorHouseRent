@@ -1,0 +1,26 @@
+﻿@model BHR.ViewModels.CreateAddViewModel
+@{
+    ViewBag.Title = "SearchByDistrict";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="create_add col-lg-4">
+        <h2>Searching By District</h2>
+        @using (Html.BeginForm("SearchDistrict", "Users", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true, "Please follow the instruction below")
+            <div class="form-group">
+                @Html.LabelFor(ca => ca.DistrictId)
+                @Html.DropDownListFor(ca => ca.DistrictId, new SelectList(Model.Districts, "Id", "Name"), "Select One", new { @class = "form-control" })
+                @Html.ValidationMessageFor(ca => ca.DistrictId)
+            </div>
+
+
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+

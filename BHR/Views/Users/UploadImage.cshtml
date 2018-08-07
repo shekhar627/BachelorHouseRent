@@ -1,0 +1,24 @@
+﻿@model BHR.Models.UserImage
+@{
+    ViewBag.Title = "UploadImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="upload-image col-lg-3">
+        <h2>Upload your image</h2>
+
+        @using (Html.BeginForm("StoreImage", "Users",null,FormMethod.Post,new{enctype="multipart/form-data"}))
+        {
+            <div class="form-group">
+                @Html.LabelFor(ui=>ui.ImageContent)
+                <input type="file" name="file" id="ImageContent" />
+            </div>
+            @Html.AntiForgeryToken()
+            <button class="btn btn-default">Upload</button>
+            @Html.ActionLink("back to previous","Index","Users")
+        }
+
+    </div>
+
+</div>

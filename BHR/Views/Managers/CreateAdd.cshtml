@@ -1,0 +1,102 @@
+﻿@model BHR.ViewModels.CreateAddViewModel
+@{
+    ViewBag.Title = "CreateAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="create_add col-lg-4">
+        @using (Html.BeginForm("StoreAdd", "Managers", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true, "Please follow the instruction below")
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.DivisionId)
+            @Html.DropDownListFor(ca => ca.DivisionId, new SelectList(Model.Divisions, "Id", "Name"), "Select One", new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.DivisionId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.DistrictId)
+            @Html.DropDownListFor(ca => ca.DistrictId, new SelectList(string.Empty, "Value", "Text"), "Select One", new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.DistrictId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.ThanaId)
+            @Html.DropDownListFor(ca => ca.ThanaId, new SelectList(string.Empty, "Value", "Text"), "Select One", new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.ThanaId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.Address)
+            @Html.TextAreaFor(ca => ca.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.Address)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.Description)
+            @Html.TextAreaFor(ca => ca.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.Description)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.Price)
+            @Html.TextBoxFor(ca => ca.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(ca => ca.Price)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.EndDate)
+            @Html.TextBoxFor(ca => ca.EndDate, new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(ca => ca.EndDate)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(ca => ca.Contents)
+            press ctrl + select your image of room or house for multiple images.
+            <input multiple type="file" name="files" id="Contents" />
+        </div>
+
+        @Html.AntiForgeryToken()
+        <button class="btn btn-primary">Crate Add</button>
+}
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // for district...
+        $("#DivisionId").change(function() {
+            $("#DistrictId").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Managers/GetDistrict",
+                datatype: "json",
+                data: { divisionId: $("#DivisionId").val() },
+                success: function(data) {
+                    $("#DistrictId").append('<option value> Select One</option>');
+                    $.each(data,
+                        function(index, value) {
+                            $("#DistrictId").append('<option value='+value.Id +'>'+value.Name+'</option>');
+                        });
+                }
+            });
+        });
+
+        // for thana...
+        $("#DistrictId").change(function() {
+            $("#ThanaId").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Managers/GetThana",
+                datatype: "json",
+                data: { districtId: $("#DistrictId").val() },
+                success: function(data) {
+                    $("#ThanaId").append('<option value> Select One</option>');
+                    $.each(data,
+                        function(index, value) {
+                            $("#ThanaId").append('<option value='+value.Id +'>'+value.Name+'</option>');
+                        });
+                }
+            });
+        });
+
+    });
+</script>

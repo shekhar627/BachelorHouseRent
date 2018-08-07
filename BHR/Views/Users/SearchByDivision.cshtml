@@ -1,0 +1,27 @@
+﻿@model BHR.ViewModels.CreateAddViewModel
+@{
+    ViewBag.Title = "SearchByDivision";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="create_add col-lg-4">
+        <h2>Searching By Division</h2>
+        @using (Html.BeginForm("SearchDivision", "Users", null, FormMethod.Post, new {enctype = "multipart/form-data"}))
+        {
+            @Html.ValidationSummary(true, "Please follow the instruction below")
+            <div class="form-group">
+                @Html.LabelFor(ca => ca.DivisionId)
+                @Html.DropDownListFor(ca => ca.DivisionId, new SelectList(Model.Divisions, "Id", "Name"), "Select One", new {@class = "form-control"})
+                @Html.ValidationMessageFor(ca => ca.DivisionId)
+            </div>
+
+
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+

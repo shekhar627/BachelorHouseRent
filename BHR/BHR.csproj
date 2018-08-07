@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{27AF5A47-CB78-42C6-8C63-635C7DE6A4C4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BHR</RootNamespace>
+    <AssemblyName>BHR</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BhrContext.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HousesController.cs" />
+    <Compile Include="Controllers\ManagersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="EntityConfiguration\AdvertiseImageConfiguration.cs" />
+    <Compile Include="EntityConfiguration\AdvertisementConfiguration.cs" />
+    <Compile Include="EntityConfiguration\ConfirmPaymentConfiguration.cs" />
+    <Compile Include="EntityConfiguration\DistrictConfiguration.cs" />
+    <Compile Include="EntityConfiguration\DivisionConfiguration.cs" />
+    <Compile Include="EntityConfiguration\HouseConfiguration.cs" />
+    <Compile Include="EntityConfiguration\HouseKeyConfiguration.cs" />
+    <Compile Include="EntityConfiguration\ManagerHouseConfiguration.cs" />
+    <Compile Include="EntityConfiguration\OccupationConfiguration.cs" />
+    <Compile Include="EntityConfiguration\ThanaConfiguration.cs" />
+    <Compile Include="EntityConfiguration\UserConfiguration.cs" />
+    <Compile Include="EntityConfiguration\UserHouseConfiguration.cs" />
+    <Compile Include="EntityConfiguration\UserImageConfiguration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711172216492_AddDivisionsTable.cs" />
+    <Compile Include="Migrations\201711172216492_AddDivisionsTable.Designer.cs">
+      <DependentUpon>201711172216492_AddDivisionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711172342599_PopulateDivisionsTable.cs" />
+    <Compile Include="Migrations\201711172342599_PopulateDivisionsTable.Designer.cs">
+      <DependentUpon>201711172342599_PopulateDivisionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711172351368_AddDistrictsTable.cs" />
+    <Compile Include="Migrations\201711172351368_AddDistrictsTable.Designer.cs">
+      <DependentUpon>201711172351368_AddDistrictsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711172352199_PopulateDistrictsTable.cs" />
+    <Compile Include="Migrations\201711172352199_PopulateDistrictsTable.Designer.cs">
+      <DependentUpon>201711172352199_PopulateDistrictsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711180008438_AddOccupationsTable.cs" />
+    <Compile Include="Migrations\201711180008438_AddOccupationsTable.Designer.cs">
+      <DependentUpon>201711180008438_AddOccupationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711180009455_PopulateOccupationsTable.cs" />
+    <Compile Include="Migrations\201711180009455_PopulateOccupationsTable.Designer.cs">
+      <DependentUpon>201711180009455_PopulateOccupationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182210143_AddUsersTable.cs" />
+    <Compile Include="Migrations\201711182210143_AddUsersTable.Designer.cs">
+      <DependentUpon>201711182210143_AddUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182246346_ChangeIsAHouseOwnerColumnInUsersTable.cs" />
+    <Compile Include="Migrations\201711182246346_ChangeIsAHouseOwnerColumnInUsersTable.Designer.cs">
+      <DependentUpon>201711182246346_ChangeIsAHouseOwnerColumnInUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182322309_AddPasswordColumnToUserTable.cs" />
+    <Compile Include="Migrations\201711182322309_AddPasswordColumnToUserTable.Designer.cs">
+      <DependentUpon>201711182322309_AddPasswordColumnToUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711182324124_AddConfirmPasswordColumnToUsersTable.cs" />
+    <Compile Include="Migrations\201711182324124_AddConfirmPasswordColumnToUsersTable.Designer.cs">
+      <DependentUpon>201711182324124_AddConfirmPasswordColumnToUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711200217223_AddIsUniqueConstraintsWithUserIdColumnInUsersTable.cs" />
+    <Compile Include="Migrations\201711200217223_AddIsUniqueConstraintsWithUserIdColumnInUsersTable.Designer.cs">
+      <DependentUpon>201711200217223_AddIsUniqueConstraintsWithUserIdColumnInUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711200457081_AddUserImagesTable.cs" />
+    <Compile Include="Migrations\201711200457081_AddUserImagesTable.Designer.cs">
+      <DependentUpon>201711200457081_AddUserImagesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711201808594_AddContentTypeColumnToUserImagesTable.cs" />
+    <Compile Include="Migrations\201711201808594_AddContentTypeColumnToUserImagesTable.Designer.cs">
+      <DependentUpon>201711201808594_AddContentTypeColumnToUserImagesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711221332076_AddIsValidColumnToUsersTable.cs" />
+    <Compile Include="Migrations\201711221332076_AddIsValidColumnToUsersTable.Designer.cs">
+      <DependentUpon>201711221332076_AddIsValidColumnToUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711221347457_AddDocumentsTable.cs" />
+    <Compile Include="Migrations\201711221347457_AddDocumentsTable.Designer.cs">
+      <DependentUpon>201711221347457_AddDocumentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711221900105_AddContentTypeColumnToDocumentsTable.cs" />
+    <Compile Include="Migrations\201711221900105_AddContentTypeColumnToDocumentsTable.Designer.cs">
+      <DependentUpon>201711221900105_AddContentTypeColumnToDocumentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240935041_AddThanasTable.cs" />
+    <Compile Include="Migrations\201711240935041_AddThanasTable.Designer.cs">
+      <DependentUpon>201711240935041_AddThanasTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240936206_PopulateThanasTable.cs" />
+    <Compile Include="Migrations\201711240936206_PopulateThanasTable.Designer.cs">
+      <DependentUpon>201711240936206_PopulateThanasTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240943578_AddHousesTable.cs" />
+    <Compile Include="Migrations\201711240943578_AddHousesTable.Designer.cs">
+      <DependentUpon>201711240943578_AddHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240948287_AddUserIdColumnToHousesTable.cs" />
+    <Compile Include="Migrations\201711240948287_AddUserIdColumnToHousesTable.Designer.cs">
+      <DependentUpon>201711240948287_AddUserIdColumnToHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241016527_ChangeDataInDistrictsTable.cs" />
+    <Compile Include="Migrations\201711241016527_ChangeDataInDistrictsTable.Designer.cs">
+      <DependentUpon>201711241016527_ChangeDataInDistrictsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241510418_DeleteDistrictIdColumnFromHousesTable.cs" />
+    <Compile Include="Migrations\201711241510418_DeleteDistrictIdColumnFromHousesTable.Designer.cs">
+      <DependentUpon>201711241510418_DeleteDistrictIdColumnFromHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241511491_DeleteAllDataFromDistrictsTable.cs" />
+    <Compile Include="Migrations\201711241511491_DeleteAllDataFromDistrictsTable.Designer.cs">
+      <DependentUpon>201711241511491_DeleteAllDataFromDistrictsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241513586_DeleteThanaIdColumnFromHousesTable.cs" />
+    <Compile Include="Migrations\201711241513586_DeleteThanaIdColumnFromHousesTable.Designer.cs">
+      <DependentUpon>201711241513586_DeleteThanaIdColumnFromHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241515005_DeleteAllDataFromThanasTable.cs" />
+    <Compile Include="Migrations\201711241515005_DeleteAllDataFromThanasTable.Designer.cs">
+      <DependentUpon>201711241515005_DeleteAllDataFromThanasTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241519309_AddDivisionIdColumnToDistrictsTable.cs" />
+    <Compile Include="Migrations\201711241519309_AddDivisionIdColumnToDistrictsTable.Designer.cs">
+      <DependentUpon>201711241519309_AddDivisionIdColumnToDistrictsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241524135_AddDistrictIdColumnToThanasTable.cs" />
+    <Compile Include="Migrations\201711241524135_AddDistrictIdColumnToThanasTable.Designer.cs">
+      <DependentUpon>201711241524135_AddDistrictIdColumnToThanasTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241529565_DeleteDivisionIdColumnFromHousesTable.cs" />
+    <Compile Include="Migrations\201711241529565_DeleteDivisionIdColumnFromHousesTable.Designer.cs">
+      <DependentUpon>201711241529565_DeleteDivisionIdColumnFromHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241531066_AddThanaIdColumnToHousesTable.cs" />
+    <Compile Include="Migrations\201711241531066_AddThanaIdColumnToHousesTable.Designer.cs">
+      <DependentUpon>201711241531066_AddThanaIdColumnToHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241534210_PopulateDistrictsTable1.cs" />
+    <Compile Include="Migrations\201711241534210_PopulateDistrictsTable1.Designer.cs">
+      <DependentUpon>201711241534210_PopulateDistrictsTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241539358_PopulateThanasTable1.cs" />
+    <Compile Include="Migrations\201711241539358_PopulateThanasTable1.Designer.cs">
+      <DependentUpon>201711241539358_PopulateThanasTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251715259_AddHouseKeysTable.cs" />
+    <Compile Include="Migrations\201711251715259_AddHouseKeysTable.Designer.cs">
+      <DependentUpon>201711251715259_AddHouseKeysTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711262125334_AddFlatNameColumnToHousesTable.cs" />
+    <Compile Include="Migrations\201711262125334_AddFlatNameColumnToHousesTable.Designer.cs">
+      <DependentUpon>201711262125334_AddFlatNameColumnToHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711262127349_DeleteFlatNameColumnFromHousesTable.cs" />
+    <Compile Include="Migrations\201711262127349_DeleteFlatNameColumnFromHousesTable.Designer.cs">
+      <DependentUpon>201711262127349_DeleteFlatNameColumnFromHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711262130181_AddFlatNameColumnToHouseKeysTable.cs" />
+    <Compile Include="Migrations\201711262130181_AddFlatNameColumnToHouseKeysTable.Designer.cs">
+      <DependentUpon>201711262130181_AddFlatNameColumnToHouseKeysTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271830482_AddUserHousesTable.cs" />
+    <Compile Include="Migrations\201711271830482_AddUserHousesTable.Designer.cs">
+      <DependentUpon>201711271830482_AddUserHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271857556_AddManagerHousesTable.cs" />
+    <Compile Include="Migrations\201711271857556_AddManagerHousesTable.Designer.cs">
+      <DependentUpon>201711271857556_AddManagerHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282023518_AddKeyColumnToManagerHousesTable.cs" />
+    <Compile Include="Migrations\201711282023518_AddKeyColumnToManagerHousesTable.Designer.cs">
+      <DependentUpon>201711282023518_AddKeyColumnToManagerHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282051584_DeleteHouseKeyIdColumnFromManagerHousesTable.cs" />
+    <Compile Include="Migrations\201711282051584_DeleteHouseKeyIdColumnFromManagerHousesTable.Designer.cs">
+      <DependentUpon>201711282051584_DeleteHouseKeyIdColumnFromManagerHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282127383_AddOwnerNotificationsTable.cs" />
+    <Compile Include="Migrations\201711282127383_AddOwnerNotificationsTable.Designer.cs">
+      <DependentUpon>201711282127383_AddOwnerNotificationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282131353_AddTurnPointColumnToOwnerNotificationsTable.cs" />
+    <Compile Include="Migrations\201711282131353_AddTurnPointColumnToOwnerNotificationsTable.Designer.cs">
+      <DependentUpon>201711282131353_AddTurnPointColumnToOwnerNotificationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282230013_DeleteManagerHouseIdFromOwnerNotificationsTable.cs" />
+    <Compile Include="Migrations\201711282230013_DeleteManagerHouseIdFromOwnerNotificationsTable.Designer.cs">
+      <DependentUpon>201711282230013_DeleteManagerHouseIdFromOwnerNotificationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282232421_DeleteOwnerNotificationsTable.cs" />
+    <Compile Include="Migrations\201711282232421_DeleteOwnerNotificationsTable.Designer.cs">
+      <DependentUpon>201711282232421_DeleteOwnerNotificationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712192039466_AddMemberHousesTable.cs" />
+    <Compile Include="Migrations\201712192039466_AddMemberHousesTable.Designer.cs">
+      <DependentUpon>201712192039466_AddMemberHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712192102198_RemoveUser_idColumnFromMemberHouses.cs" />
+    <Compile Include="Migrations\201712192102198_RemoveUser_idColumnFromMemberHouses.Designer.cs">
+      <DependentUpon>201712192102198_RemoveUser_idColumnFromMemberHouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712192104403_AddUserIdColumnToMemberHouses.cs" />
+    <Compile Include="Migrations\201712192104403_AddUserIdColumnToMemberHouses.Designer.cs">
+      <DependentUpon>201712192104403_AddUserIdColumnToMemberHouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712201753431_RemoveUser_IdColumnFromUserHousesTable.cs" />
+    <Compile Include="Migrations\201712201753431_RemoveUser_IdColumnFromUserHousesTable.Designer.cs">
+      <DependentUpon>201712201753431_RemoveUser_IdColumnFromUserHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712201755029_AddUserIdColumnToUserHousesTable.cs" />
+    <Compile Include="Migrations\201712201755029_AddUserIdColumnToUserHousesTable.Designer.cs">
+      <DependentUpon>201712201755029_AddUserIdColumnToUserHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712202106315_DeleteMemberHousesTable.cs" />
+    <Compile Include="Migrations\201712202106315_DeleteMemberHousesTable.Designer.cs">
+      <DependentUpon>201712202106315_DeleteMemberHousesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712230758105_AddAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712230758105_AddAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712230758105_AddAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712230811381_AddAdvertiseImagesTable.cs" />
+    <Compile Include="Migrations\201712230811381_AddAdvertiseImagesTable.Designer.cs">
+      <DependentUpon>201712230811381_AddAdvertiseImagesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231032063_AddMapColumnToAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712231032063_AddMapColumnToAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712231032063_AddMapColumnToAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231109163_AddPriceColumnToAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712231109163_AddPriceColumnToAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712231109163_AddPriceColumnToAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231122013_AddUserIdColumnToAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712231122013_AddUserIdColumnToAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712231122013_AddUserIdColumnToAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231508040_AddIsPaidColumnToAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712231508040_AddIsPaidColumnToAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712231508040_AddIsPaidColumnToAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231739263_AddPaymentMethodsTable.cs" />
+    <Compile Include="Migrations\201712231739263_AddPaymentMethodsTable.Designer.cs">
+      <DependentUpon>201712231739263_AddPaymentMethodsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231749110_AddKeyColumnToAdvertisementsTable.cs" />
+    <Compile Include="Migrations\201712231749110_AddKeyColumnToAdvertisementsTable.Designer.cs">
+      <DependentUpon>201712231749110_AddKeyColumnToAdvertisementsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231926259_AddConfirmPaymentsTable.cs" />
+    <Compile Include="Migrations\201712231926259_AddConfirmPaymentsTable.Designer.cs">
+      <DependentUpon>201712231926259_AddConfirmPaymentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712232109385_AddIsCheckedByAdminColumnToConfirmPaymentsTable.cs" />
+    <Compile Include="Migrations\201712232109385_AddIsCheckedByAdminColumnToConfirmPaymentsTable.Designer.cs">
+      <DependentUpon>201712232109385_AddIsCheckedByAdminColumnToConfirmPaymentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712232211428_DeleteMapColumnFromAdvertisenentsTable.cs" />
+    <Compile Include="Migrations\201712232211428_DeleteMapColumnFromAdvertisenentsTable.Designer.cs">
+      <DependentUpon>201712232211428_DeleteMapColumnFromAdvertisenentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AdvertiseImage.cs" />
+    <Compile Include="Models\Advertisement.cs" />
+    <Compile Include="Models\ConfirmPayment.cs" />
+    <Compile Include="Models\District.cs" />
+    <Compile Include="Models\Division.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\House.cs" />
+    <Compile Include="Models\HouseKey.cs" />
+    <Compile Include="Models\ManagerHouse.cs" />
+    <Compile Include="Models\Occupation.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
+    <Compile Include="Models\Thana.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserHouse.cs" />
+    <Compile Include="Models\UserImage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AddDetailsViewModel.cs" />
+    <Compile Include="ViewModels\AllAddViewModel.cs" />
+    <Compile Include="ViewModels\CheckExperianceViewModel.cs" />
+    <Compile Include="ViewModels\CreateAddViewModel.cs" />
+    <Compile Include="ViewModels\CreateHouseViewModel.cs" />
+    <Compile Include="ViewModels\HouseKeyListViewModel.cs" />
+    <Compile Include="ViewModels\MembersListViewModel.cs" />
+    <Compile Include="ViewModels\NewManagerWithExistingManagerViewModel.cs" />
+    <Compile Include="ViewModels\NewUserViewModel.cs" />
+    <Compile Include="ViewModels\PaymentViewModel.cs" />
+    <Compile Include="ViewModels\StorePaymentViewModel.cs" />
+    <Compile Include="ViewModels\UpdateUserViewModel.cs" />
+    <Compile Include="ViewModels\UserDetailsViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoWithImageViewModel.cs" />
+    <Compile Include="ViewModels\UserLoginViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\dancingscript-regular-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\profile_pic.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\dancingscript-regular-webfont.eot" />
+    <Content Include="fonts\dancingscript-regular-webfont.ttf" />
+    <Content Include="fonts\dancingscript-regular-webfont.woff" />
+    <Content Include="fonts\dancingscript-regular-webfont.woff2" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\UploadImage.cshtml" />
+    <Content Include="Views\Users\LogInUser.cshtml" />
+    <Content Include="Views\Users\Update.cshtml" />
+    <Content Include="Views\Users\VerifyAccount.cshtml" />
+    <Content Include="Views\Users\CheckDocument.cshtml" />
+    <Content Include="Views\Houses\CreateHouse.cshtml" />
+    <Content Include="Views\Houses\HouseList.cshtml" />
+    <Content Include="Views\Houses\HouseDetails.cshtml" />
+    <Content Include="Views\Houses\HouseKey.cshtml" />
+    <Content Include="Views\Houses\HouseKeyList.cshtml" />
+    <Content Include="Views\Managers\CheckingNManager.cshtml" />
+    <Content Include="Views\Managers\CreateManager.cshtml" />
+    <Content Include="Views\Houses\ManagerDetails.cshtml" />
+    <Content Include="Views\Users\AddMember.cshtml" />
+    <Content Include="Views\Houses\MembersList.cshtml" />
+    <Content Include="Views\Houses\MemberDetails.cshtml" />
+    <Content Include="Views\Managers\CheckExperience.cshtml" />
+    <Content Include="Views\Managers\CheckMembers.cshtml" />
+    <Content Include="Views\Managers\SingleUser.cshtml" />
+    <Content Include="Views\Managers\ReplaceManager.cshtml" />
+    <Content Include="Views\Managers\CreateNewManager.cshtml" />
+    <Content Include="Views\Managers\CreateAdd.cshtml" />
+    <Content Include="Views\Users\CheckYourAdd.cshtml" />
+    <Content Include="Views\Houses\ViewAddDetails.cshtml" />
+    <Content Include="Views\Users\AllAdd.cshtml" />
+    <Content Include="Views\Users\SearchByDivision.cshtml" />
+    <Content Include="Views\Users\SearchDivision.cshtml" />
+    <Content Include="Views\Users\SearchByDistrict.cshtml" />
+    <Content Include="Views\Users\SearchDistrict.cshtml" />
+    <Content Include="Views\Users\SearchByThana.cshtml" />
+    <Content Include="Views\Users\SearchThana.cshtml" />
+    <Content Include="Views\Managers\Payments.cshtml" />
+    <Content Include="Views\Managers\AddPay.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\PendingAdd.cshtml" />
+    <Content Include="Views\Admins\PendingUser.cshtml" />
+    <Content Include="Views\Admins\ViewUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711172216492_AddDivisionsTable.resx">
+      <DependentUpon>201711172216492_AddDivisionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711172342599_PopulateDivisionsTable.resx">
+      <DependentUpon>201711172342599_PopulateDivisionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711172351368_AddDistrictsTable.resx">
+      <DependentUpon>201711172351368_AddDistrictsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711172352199_PopulateDistrictsTable.resx">
+      <DependentUpon>201711172352199_PopulateDistrictsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711180008438_AddOccupationsTable.resx">
+      <DependentUpon>201711180008438_AddOccupationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711180009455_PopulateOccupationsTable.resx">
+      <DependentUpon>201711180009455_PopulateOccupationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182210143_AddUsersTable.resx">
+      <DependentUpon>201711182210143_AddUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182246346_ChangeIsAHouseOwnerColumnInUsersTable.resx">
+      <DependentUpon>201711182246346_ChangeIsAHouseOwnerColumnInUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182322309_AddPasswordColumnToUserTable.resx">
+      <DependentUpon>201711182322309_AddPasswordColumnToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711182324124_AddConfirmPasswordColumnToUsersTable.resx">
+      <DependentUpon>201711182324124_AddConfirmPasswordColumnToUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711200217223_AddIsUniqueConstraintsWithUserIdColumnInUsersTable.resx">
+      <DependentUpon>201711200217223_AddIsUniqueConstraintsWithUserIdColumnInUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711200457081_AddUserImagesTable.resx">
+      <DependentUpon>201711200457081_AddUserImagesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711201808594_AddContentTypeColumnToUserImagesTable.resx">
+      <DependentUpon>201711201808594_AddContentTypeColumnToUserImagesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221332076_AddIsValidColumnToUsersTable.resx">
+      <DependentUpon>201711221332076_AddIsValidColumnToUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221347457_AddDocumentsTable.resx">
+      <DependentUpon>201711221347457_AddDocumentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221900105_AddContentTypeColumnToDocumentsTable.resx">
+      <DependentUpon>201711221900105_AddContentTypeColumnToDocumentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240935041_AddThanasTable.resx">
+      <DependentUpon>201711240935041_AddThanasTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240936206_PopulateThanasTable.resx">
+      <DependentUpon>201711240936206_PopulateThanasTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240943578_AddHousesTable.resx">
+      <DependentUpon>201711240943578_AddHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240948287_AddUserIdColumnToHousesTable.resx">
+      <DependentUpon>201711240948287_AddUserIdColumnToHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241016527_ChangeDataInDistrictsTable.resx">
+      <DependentUpon>201711241016527_ChangeDataInDistrictsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241510418_DeleteDistrictIdColumnFromHousesTable.resx">
+      <DependentUpon>201711241510418_DeleteDistrictIdColumnFromHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241511491_DeleteAllDataFromDistrictsTable.resx">
+      <DependentUpon>201711241511491_DeleteAllDataFromDistrictsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241513586_DeleteThanaIdColumnFromHousesTable.resx">
+      <DependentUpon>201711241513586_DeleteThanaIdColumnFromHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241515005_DeleteAllDataFromThanasTable.resx">
+      <DependentUpon>201711241515005_DeleteAllDataFromThanasTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241519309_AddDivisionIdColumnToDistrictsTable.resx">
+      <DependentUpon>201711241519309_AddDivisionIdColumnToDistrictsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241524135_AddDistrictIdColumnToThanasTable.resx">
+      <DependentUpon>201711241524135_AddDistrictIdColumnToThanasTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241529565_DeleteDivisionIdColumnFromHousesTable.resx">
+      <DependentUpon>201711241529565_DeleteDivisionIdColumnFromHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241531066_AddThanaIdColumnToHousesTable.resx">
+      <DependentUpon>201711241531066_AddThanaIdColumnToHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241534210_PopulateDistrictsTable1.resx">
+      <DependentUpon>201711241534210_PopulateDistrictsTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241539358_PopulateThanasTable1.resx">
+      <DependentUpon>201711241539358_PopulateThanasTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251715259_AddHouseKeysTable.resx">
+      <DependentUpon>201711251715259_AddHouseKeysTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711262125334_AddFlatNameColumnToHousesTable.resx">
+      <DependentUpon>201711262125334_AddFlatNameColumnToHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711262127349_DeleteFlatNameColumnFromHousesTable.resx">
+      <DependentUpon>201711262127349_DeleteFlatNameColumnFromHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711262130181_AddFlatNameColumnToHouseKeysTable.resx">
+      <DependentUpon>201711262130181_AddFlatNameColumnToHouseKeysTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271830482_AddUserHousesTable.resx">
+      <DependentUpon>201711271830482_AddUserHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271857556_AddManagerHousesTable.resx">
+      <DependentUpon>201711271857556_AddManagerHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282023518_AddKeyColumnToManagerHousesTable.resx">
+      <DependentUpon>201711282023518_AddKeyColumnToManagerHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282051584_DeleteHouseKeyIdColumnFromManagerHousesTable.resx">
+      <DependentUpon>201711282051584_DeleteHouseKeyIdColumnFromManagerHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282127383_AddOwnerNotificationsTable.resx">
+      <DependentUpon>201711282127383_AddOwnerNotificationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282131353_AddTurnPointColumnToOwnerNotificationsTable.resx">
+      <DependentUpon>201711282131353_AddTurnPointColumnToOwnerNotificationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282230013_DeleteManagerHouseIdFromOwnerNotificationsTable.resx">
+      <DependentUpon>201711282230013_DeleteManagerHouseIdFromOwnerNotificationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282232421_DeleteOwnerNotificationsTable.resx">
+      <DependentUpon>201711282232421_DeleteOwnerNotificationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712192039466_AddMemberHousesTable.resx">
+      <DependentUpon>201712192039466_AddMemberHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712192102198_RemoveUser_idColumnFromMemberHouses.resx">
+      <DependentUpon>201712192102198_RemoveUser_idColumnFromMemberHouses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712192104403_AddUserIdColumnToMemberHouses.resx">
+      <DependentUpon>201712192104403_AddUserIdColumnToMemberHouses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712201753431_RemoveUser_IdColumnFromUserHousesTable.resx">
+      <DependentUpon>201712201753431_RemoveUser_IdColumnFromUserHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712201755029_AddUserIdColumnToUserHousesTable.resx">
+      <DependentUpon>201712201755029_AddUserIdColumnToUserHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712202106315_DeleteMemberHousesTable.resx">
+      <DependentUpon>201712202106315_DeleteMemberHousesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712230758105_AddAdvertisementsTable.resx">
+      <DependentUpon>201712230758105_AddAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712230811381_AddAdvertiseImagesTable.resx">
+      <DependentUpon>201712230811381_AddAdvertiseImagesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231032063_AddMapColumnToAdvertisementsTable.resx">
+      <DependentUpon>201712231032063_AddMapColumnToAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231109163_AddPriceColumnToAdvertisementsTable.resx">
+      <DependentUpon>201712231109163_AddPriceColumnToAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231122013_AddUserIdColumnToAdvertisementsTable.resx">
+      <DependentUpon>201712231122013_AddUserIdColumnToAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231508040_AddIsPaidColumnToAdvertisementsTable.resx">
+      <DependentUpon>201712231508040_AddIsPaidColumnToAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231739263_AddPaymentMethodsTable.resx">
+      <DependentUpon>201712231739263_AddPaymentMethodsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231749110_AddKeyColumnToAdvertisementsTable.resx">
+      <DependentUpon>201712231749110_AddKeyColumnToAdvertisementsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231926259_AddConfirmPaymentsTable.resx">
+      <DependentUpon>201712231926259_AddConfirmPaymentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712232109385_AddIsCheckedByAdminColumnToConfirmPaymentsTable.resx">
+      <DependentUpon>201712232109385_AddIsCheckedByAdminColumnToConfirmPaymentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712232211428_DeleteMapColumnFromAdvertisenentsTable.resx">
+      <DependentUpon>201712232211428_DeleteMapColumnFromAdvertisenentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6122</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6122/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

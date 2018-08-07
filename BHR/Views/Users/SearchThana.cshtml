@@ -1,0 +1,35 @@
+﻿@model BHR.ViewModels.AllAddViewModel
+@{
+    ViewBag.Title = "SearchThana";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="all_add col-lg-12">
+        <div class="all_add_content col-lg-offset-2 col-lg-7">
+            @foreach (var x in Model.Advertisements)
+            {
+                <div class="add_single_content col-lg-12">
+                    <div class="text col-lg-3">
+                        <h1>To-Let</h1>
+                    </div>
+                    <div class="content col-lg-6">
+                        <p>
+                            <b>Description:</b>@x.Description
+                        </p>
+                        <p>
+                            <b>Address: </b>@x.Address
+                        </p>
+                        <p>
+                            <b>Published Date: </b>@x.PublishDate.ToString(string.Format("dd/MM/yyyy"))
+                        </p>
+
+                        <p>@Html.ActionLink("click here to check more", "ViewAddDetails", "Houses", new { id = x.Id }, null)</p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+

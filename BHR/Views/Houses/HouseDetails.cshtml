@@ -1,0 +1,59 @@
+﻿@model BHR.Models.House
+@{
+    ViewBag.Title = "HouseDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb">Details of your House</h2>
+<div class="row">
+    <div class="house-details col-lg-8">
+        <div class="page-header">
+            <h1>@Model.Address</h1>
+        </div>
+        <table class="table table-hover">
+            <tbody>
+            <tr>
+                <td>Owner's First Name </td>
+                <td>@Model.User.FirstName</td>
+            </tr>
+            <tr>
+                <td>Owner's Last Name </td>
+                <td>@Model.User.LastName</td>
+            </tr>
+            <tr>
+                <td>Owner's Real Address</td>
+                <td>@Model.User.Address</td>
+            </tr>
+            <tr>
+                <td>Owner's User Id</td>
+                <td>@Model.User.UserId</td>
+            </tr>
+            <tr>
+                <td>Owner's House To Be Rented</td>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <td>Division</td>
+                <td>@Model.Thana.District.Division.Name</td>
+            </tr>
+            <tr>
+                <td>District</td>
+                <td>@Model.Thana.District.Name</td>
+            </tr>
+            <tr>
+                <td>Thana</td>
+                <td>@Model.Thana.Name</td>
+            </tr>
+            </tbody>
+        </table><br/>
+        @Html.ActionLink("back to previous","HouseList","Houses",null, null)
+
+    </div>
+    <div class="house-details-link col-lg-4">
+        <ul>
+            <li>@Html.ActionLink("generate keys for this house","HouseKey","Houses",new { id = Model.Id},null)</li>
+            <li>@Html.ActionLink("check keys for this house","HouseKeyList","Houses",new { id = Model.Id},null)</li>
+        </ul>
+    </div>
+</div>
+

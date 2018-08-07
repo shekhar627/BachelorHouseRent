@@ -1,0 +1,25 @@
+﻿@model BHR.ViewModels.PaymentViewModel
+@{
+    ViewBag.Title = "Payments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="payments col-lg-4">
+        <h2>Payments</h2>
+        @using (Html.BeginForm("AddPay", "Managers", null, FormMethod.Post, new {enctype = "multipart/form-data"}))
+        {
+            @Html.ValidationSummary(true, "Please follow the instruction below")
+            <div class="form-group">
+                @Html.LabelFor(p => p.PaymentId)
+                @Html.DropDownListFor(p => p.PaymentId, new SelectList(Model.PaymentMethods, "Id", "Name"), null, new {@class = "form-control"})
+                @Html.ValidationMessageFor(p => p.PaymentId)
+            </div>
+
+            @Html.AntiForgeryToken()
+            <button class="btn btn-primary">Go</button>
+        }
+    </div>
+</div>
+

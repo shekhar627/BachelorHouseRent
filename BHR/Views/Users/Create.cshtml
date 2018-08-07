@@ -1,0 +1,62 @@
+﻿@model BHR.ViewModels.NewUserViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2marb">Create New User</h2>
+
+@using (Html.BeginForm("Store","Users"))
+{
+    @Html.ValidationSummary(true,"Please follow the instructions below")
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.FirstName)
+        @Html.TextBoxFor(u=>u.User.FirstName,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.LastName)
+        @Html.TextBoxFor(u=>u.User.LastName,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.UserId)
+        @Html.TextBoxFor(u=>u.User.UserId,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.UserId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.MobileNumber)
+        @Html.TextBoxFor(u=>u.User.MobileNumber,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.MobileNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.Address)
+        @Html.TextAreaFor(u=>u.User.Address,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.Address)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.OccupationId)
+        @Html.DropDownListFor(u=>u.User.OccupationId,new SelectList(@Model.Occupations,"Id","Name"),"Select One",new {@class="form-control"})
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.Password)
+        @Html.PasswordFor(u=>u.User.Password,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.Password)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(u=>u.User.ConfirmPassword)
+        @Html.PasswordFor(u=>u.User.ConfirmPassword,new {@class="form-control"})
+        @Html.ValidationMessageFor(u => u.User.ConfirmPassword)
+    </div>
+    <div class="form-check">
+            @Html.CheckBoxFor(u => u.User.IsAHouseOwner,new {@class= "form-check-input" }) Is a house owner?
+    </div>
+    @Html.AntiForgeryToken()
+    <button class="btn btn-primary">Register</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

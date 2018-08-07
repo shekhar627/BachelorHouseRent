@@ -1,0 +1,179 @@
+﻿@using System.Web.UI.HtmlControls
+@model BHR.ViewModels.UserInfoWithImageViewModel
+@{
+    ViewBag.Title = "User~Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="welcome-text col-lg-12">
+        <h3>welcome!! @Model.User.FirstName @Model.User.LastName</h3>
+
+        @if (Model.User.IsValid == null && Model.Document == null)
+        {
+            <span class="label label-danger">Not Verified</span><br />
+        }
+        else if (Model.User.IsValid == null && Model.Document != null)
+        {
+            <span class="label label-primary">Pending</span><br />
+        }
+        else if (Model.User.IsValid == false && Model.Document != null)
+        {
+            <span class="label label-warning">Rejected</span><br />
+        }
+        else
+        {
+            <span class="label label-success">Verified</span><br />
+        }
+
+    </div>
+
+    <div class="option col-lg-4">
+        <ul>
+
+
+            @if (Model.User.IsValid == null && Model.Document == null)
+            {
+                <li> @Html.ActionLink("Verify your account ? ", "VerifyAccount", "Users", null, new { @class = "text-danger" })</li>
+            }
+            else if (Model.User.IsValid == null && Model.Document != null)
+            {
+                <p class="text-success">Our admin will review your documents. Thanks for co-operating.</p>
+            }
+            else if (Model.User.IsValid == false && Model.Document != null)
+            {
+                <li>@Html.ActionLink("Verify your account again ?", "VerifyAccount", "Users", null, new { @class = "text-danger" })</li>
+                <p class="text-success">Your documents was not valid. Please upload valid document.</p>
+            }
+            else
+            {
+                if (Model.User.IsAHouseOwner == false)
+                {
+                    <li>@Html.ActionLink("be a manager", "CheckingNManager", "Managers")</li>
+                    <li>@Html.ActionLink("your manager experience", "CheckExperience", "Managers")</li>
+                }
+
+                if (Model.ManagerHouse != null && Model.ManagerHouse.IsActive == null)
+                {
+                    <p class="text-success">[ pending manager request ]</p>
+                    <br />
+                }
+                else if (Model.ManagerHouse != null && Model.ManagerHouse.IsActive == true)
+                {
+
+                    <li>@Html.ActionLink("create an advertisement", "CreateAdd", "Managers")</li>
+                    <li>@Html.ActionLink("add a member", "AddMember", "Users")</li>
+                    <li>@Html.ActionLink("check members", "CheckMembers", "Managers")</li>
+                    <li>@Html.ActionLink("manager replacement", "ReplaceManager", "Managers")</li>
+                    <li>@Html.ActionLink("Payments", "Payments", "Managers")</li>
+                }
+
+                <li>@Html.ActionLink("Check your verified document", "CheckDocument", "Users")</li>
+
+
+            }
+            @{
+                if (@Model.User.IsAHouseOwner != false)
+                {
+                    if (Model.Document != null && Model.User.IsValid == true)
+                    {
+                        <li>@Html.ActionLink("check your house list", "HouseList", "Houses")</li>
+                    }
+
+                }
+            }
+        </ul>
+    </div>
+    <div class="user-info col-lg-4">
+        <h5>Your Information</h5><br />
+        <table class="ttt">
+            <tr>
+                <td>First Name</td>
+                <td>@Model.User.FirstName</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Model.User.LastName</td>
+            </tr>
+            <tr>
+                <td>User Id</td>
+                <td>@Model.User.UserId</td>
+            </tr>
+            <tr>
+                <td>Mobile NUmber</td>
+                <td>@Model.User.MobileNumber</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>@Model.User.Address</td>
+            </tr>
+            <tr>
+                <td>Occupation</td>
+                <td>@Model.User.Occupation.Name</td>
+            </tr>
+            <tr>
+                <td>Is a house owner?</td>
+                <td>
+                    @{
+                        if (Model.User.IsAHouseOwner == false)
+                        {
+                            Write("No");
+                        }
+                        else
+                        {
+                            if (Model.Document != null && Model.User.IsValid == true)
+                            {
+                                Write("Yes  ");
+                                @Html.ActionLink("( insert you house information )", "CreateHouse", "Houses")
+                            }
+                            else
+                            {
+                                Write("Yes  ");
+                            }
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Manager Experience ?</td>
+                <td>
+                    @{
+                        if (Model.User.IsAManager == false || Model.User.IsAManager == null)
+                        {
+                            Write("No");
+                        }
+                        else
+                        {
+                            Write("Yes");
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="image-content col-lg-4">
+        <h5>Personal Image</h5><br />
+        <div class="image">
+            @{
+                if (Model.UserImage != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.UserImage.ImageContent);
+                    var imgSrc = string.Format("data: {0}; base64, {1}", Model.UserImage.ContentType, base64);
+
+                    <img src="@imgSrc" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;' />
+
+                }
+                else
+                {
+                    <img src="~/images/profile_pic.png" alt="profile image" style='height: 100%; width: 100%; border: 1px solid black;' />
+                }
+            }
+        </div>
+        @Html.ActionLink("change your personal image", "UploadImage", "Users")
+        @Html.ActionLink("edit or update information", "Update", "Users")
+
+    </div>
+
+</div>
+
